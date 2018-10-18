@@ -14,7 +14,7 @@ import static org.testng.Assert.assertTrue;
 public class Test3 {
 
     @Test(groups = "Regression")
-    public void testJDIWebsite1() {
+    public void homePageContentTest1() {
 
         //1 Open test site by URL
         WebDriver driver = new ChromeDriver();
@@ -70,7 +70,10 @@ public class Test3 {
         WebElement mainHeader = driver.findElement(By.cssSelector("h3.main-title"));
         assertEquals(mainHeader.getText(), "EPAM FRAMEWORK WISHES…");
         WebElement header = driver.findElement(By.cssSelector("p.main-txt"));
-        assertTrue(header.getText().startsWith("LOREM IPSUM"));
+        assertEquals(header.getText(), "LOREM IPSUM DOLOR SIT AMET, CONSECTETUR ADIPISICING ELIT, " +
+                "SED DO EIUSMOD TEMPOR INCIDIDUNT UT LABORE ET DOLORE MAGNA ALIQUA. UT ENIM AD MINIM VENIAM, " +
+                "QUIS NOSTRUD EXERCITATION ULLAMCO LABORIS NISI UT ALIQUIP EX EA COMMODO CONSEQUAT DUIS AUTE " +
+                "IRURE DOLOR IN REPREHENDERIT IN VOLUPTATE VELIT ESSE CILLUM DOLORE EU FUGIAT NULLA PARIATUR.");
 
         //10 Assert that there is the iframe in the center of page
         WebElement iFrame = driver.findElement(By.cssSelector("[id = 'iframe']"));
@@ -105,7 +108,7 @@ public class Test3 {
     }
 
     @Test(groups = "Regression")
-    public void testJDIWebsite2() {
+    public void homePageContentTest2() {
 
         //1 Open test site by URL
         WebDriver driver = new ChromeDriver();
@@ -161,7 +164,10 @@ public class Test3 {
         WebElement mainHeader = driver.findElement(By.cssSelector("h3.main-title"));
         assertEquals(mainHeader.getText(), "EPAM FRAMEWORK WISHES…");
         WebElement header = driver.findElement(By.cssSelector("p.main-txt"));
-        assertTrue(header.getText().startsWith("LOREM IPSUM"));
+        assertEquals(header.getText(), "LOREM IPSUM DOLOR SIT AMET, CONSECTETUR ADIPISICING ELIT, " +
+                "SED DO EIUSMOD TEMPOR INCIDIDUNT UT LABORE ET DOLORE MAGNA ALIQUA. UT ENIM AD MINIM VENIAM, " +
+                "QUIS NOSTRUD EXERCITATION ULLAMCO LABORIS NISI UT ALIQUIP EX EA COMMODO CONSEQUAT DUIS AUTE " +
+                "IRURE DOLOR IN REPREHENDERIT IN VOLUPTATE VELIT ESSE CILLUM DOLORE EU FUGIAT NULLA PARIATUR.");
 
         //10 Assert that there is the iframe in the center of page
         WebElement iFrame = driver.findElement(By.cssSelector("[id = 'iframe']"));
@@ -196,7 +202,7 @@ public class Test3 {
     }
 
     @Test(groups = "Smoke")
-    public void testJDIWebsite3() {
+    public void homePageContentTest3() {
 
         //1 Open test site by URL
         WebDriver driver = new ChromeDriver();
@@ -252,7 +258,10 @@ public class Test3 {
         WebElement mainHeader = driver.findElement(By.cssSelector("h3.main-title"));
         assertEquals(mainHeader.getText(), "EPAM FRAMEWORK WISHES…");
         WebElement header = driver.findElement(By.cssSelector("p.main-txt"));
-        assertTrue(header.getText().startsWith("LOREM IPSUM"));
+        assertEquals(header.getText(), "LOREM IPSUM DOLOR SIT AMET, CONSECTETUR ADIPISICING ELIT, " +
+                "SED DO EIUSMOD TEMPOR INCIDIDUNT UT LABORE ET DOLORE MAGNA ALIQUA. UT ENIM AD MINIM VENIAM, " +
+                "QUIS NOSTRUD EXERCITATION ULLAMCO LABORIS NISI UT ALIQUIP EX EA COMMODO CONSEQUAT DUIS AUTE " +
+                "IRURE DOLOR IN REPREHENDERIT IN VOLUPTATE VELIT ESSE CILLUM DOLORE EU FUGIAT NULLA PARIATUR.");
 
         //10 Assert that there is the iframe in the center of page
         WebElement iFrame = driver.findElement(By.cssSelector("[id = 'iframe']"));

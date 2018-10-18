@@ -36,7 +36,7 @@ public class JDIWebsiteTest extends TestBase {
     }
 
     @Test
-    public void testJDIWebsite() {
+    public void homePageContentTest() {
 
         //1 Open test site by URL
         driver.navigate().to("https://epam.github.io/JDI/");
@@ -90,7 +90,10 @@ public class JDIWebsiteTest extends TestBase {
         WebElement mainHeader = driver.findElement(By.cssSelector("h3.main-title"));
         assertEquals(mainHeader.getText(), "EPAM FRAMEWORK WISHES…");
         WebElement header = driver.findElement(By.cssSelector("p.main-txt"));
-        assertTrue(header.getText().startsWith("LOREM IPSUM"));
+        assertEquals(header.getText(), "LOREM IPSUM DOLOR SIT AMET, CONSECTETUR ADIPISICING ELIT, " +
+                "SED DO EIUSMOD TEMPOR INCIDIDUNT UT LABORE ET DOLORE MAGNA ALIQUA. UT ENIM AD MINIM VENIAM, " +
+                "QUIS NOSTRUD EXERCITATION ULLAMCO LABORIS NISI UT ALIQUIP EX EA COMMODO CONSEQUAT DUIS AUTE " +
+                "IRURE DOLOR IN REPREHENDERIT IN VOLUPTATE VELIT ESSE CILLUM DOLORE EU FUGIAT NULLA PARIATUR.");
 
         //10 Assert that there is the iframe in the center of page
         WebElement iFrame = driver.findElement(By.cssSelector("[id = 'iframe']"));
