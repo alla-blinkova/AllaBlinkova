@@ -39,11 +39,7 @@ public class JDIWebsiteSoftTest {
         softAssert.assertEquals(driver.getTitle(), "Home Page");
 
         //6 Assert that there are 4 items on the header section are displayed and they have proper texts
-        List<WebElement> headerItems = new ArrayList<>();
-        headerItems.add(driver.findElement(By.cssSelector(".uui-navigation [href = 'index.html']")));
-        headerItems.add(driver.findElement(By.cssSelector(".uui-navigation [href = 'contacts.html']")));
-        headerItems.add(driver.findElement(By.cssSelector(".nav [class = 'dropdown-toggle']")));
-        headerItems.add(driver.findElement(By.cssSelector(".uui-navigation [href = 'metals-colors.html']")));
+        List<WebElement> headerItems = driver.findElements(By.cssSelector(".uui-navigation.m-l8 > li > a"));
         softAssert.assertEquals(headerItems.size(), 4);
         headerItems.forEach(x -> softAssert.assertTrue(x.isDisplayed()));
         softAssert.assertEquals(headerItems.get(0).getText(), "HOME");
@@ -78,17 +74,16 @@ public class JDIWebsiteSoftTest {
         softAssert.assertTrue(header.getText().startsWith("LOREM IPSUM"));
 
         //10 Assert that there is the iframe in the center of page
-        String windowHandler = driver.getWindowHandle();
-        List<WebElement> iFrame = driver.findElements(By.cssSelector("[id = 'iframe']"));
-        softAssert.assertFalse(iFrame.isEmpty());
+        WebElement iFrame = driver.findElement(By.cssSelector("[id = 'iframe']"));
+        softAssert.assertTrue(iFrame.isDisplayed());
 
         //11 Switch to the iframe and check that there is Epam logo in the left top conner of iframe
-        driver.switchTo().frame(iFrame.get(0));
-        List<WebElement> logo = driver.findElements(By.cssSelector("[id = 'epam_logo']"));
-        softAssert.assertFalse(logo.isEmpty());
+        driver.switchTo().frame(iFrame);
+        WebElement logo = driver.findElement(By.cssSelector("[id = 'epam_logo']"));
+        softAssert.assertTrue(logo.isDisplayed());
 
         //12 Switch to original window back
-        driver.switchTo().window(windowHandler);
+        driver.switchTo().defaultContent();
 
         //13 Assert a text of the sub header
         WebElement subHeader = driver.findElement(By.cssSelector(".text-center [target = '_blank']"));
