@@ -21,10 +21,8 @@ public enum Headers {
                         "Dates",
                         "Complex Table",
                         "Simple Table",
-//                        "User Table",
                         "Table With Pages",
                         "Different Elements")
-//                        "Performance")
         );
     }
 
