@@ -2,19 +2,18 @@ package hw4.pageObjects;
 
 import com.codeborne.selenide.ElementsCollection;
 import com.codeborne.selenide.SelenideElement;
-import hw4.enums.Headers;
+import hw4.enums.ServiceCategories;
+import hw4.enums.Users;
 import org.openqa.selenium.support.FindBy;
 
-import static com.codeborne.selenide.Condition.*;
 import static com.codeborne.selenide.Condition.attribute;
+import static com.codeborne.selenide.Condition.exist;
 import static com.codeborne.selenide.Condition.text;
 import static com.codeborne.selenide.Selenide.open;
-
 import static hw4.enums.Headers.TITLE;
 import static hw4.enums.Links.HOME_PAGE;
 
-public class ServicePage {
-
+public class HomePage {
     @FindBy(css = "title")
     private SelenideElement title;
 
@@ -45,40 +44,16 @@ public class ServicePage {
     @FindBy(xpath = "//li[@class='menu-title'][@index='3']/ul/li")
     private ElementsCollection serviceLeftSectionOptions;
 
-    @FindBy(css = "[name = 'navigation-sidebar']")
-    private SelenideElement leftSection;
-
-    @FindBy(css = "[name = 'log-sidebar']")
-    private SelenideElement rightSection;
-
-    @FindBy(css = ".label-checkbox")
-    private ElementsCollection checkboxes;
-
-    @FindBy(css = ".label-radio")
-    private ElementsCollection radioButtons;
-
-    @FindBy(css = ".colors > select")
-    private SelenideElement dropDown;
-
-    @FindBy(css = "[name = 'Default Button']")
-    private SelenideElement defaultButton;
-
-    @FindBy(css = "[value = 'Button']")
-    private SelenideElement button;
-
-    @FindBy(css = ".info-panel-body-log .info-panel-section > ul > li")
-    private ElementsCollection logs;
-
     //===============================methods==========================================
 
     public void openPage() {
         open(HOME_PAGE.link);
     }
 
-    public void login(String name, String passwd) {
+    public void login(Users user) {
         profileButton.click();
-        login.sendKeys(name);
-        password.sendKeys(passwd);
+        login.sendKeys(user.login);
+        password.sendKeys(user.password);
         submit.click();
     }
 
@@ -90,20 +65,8 @@ public class ServicePage {
         serviceLeftSection.click();
     }
 
-    public void openCategory(String category) {
-        serviceLeftSectionOptions.find(text(category.toUpperCase())).click();
-    }
-
-    public void selectCheckbox(String name) {
-        checkboxes.find(text(name)).click();
-    }
-
-    public void selectRadioButton(String name) {
-        radioButtons.find(text(name)).click();
-    }
-
-    public void selectInDropDown(String name) {
-        dropDown.selectOptionContainingText(name);
+    public void openCategory(ServiceCategories serviceCategory) {
+        serviceHeaderOptions.find(text(serviceCategory.categoryName.toUpperCase())).click();
     }
 
     //===============================checks==========================================
@@ -112,40 +75,19 @@ public class ServicePage {
         title.shouldHave(attribute("text", TITLE.text));
     }
 
-    public void checkUserName(String name) {
-        userNameSpan.shouldHave(text(name.toUpperCase()));
+    public void checkUserName(Users user) {
+        userNameSpan.shouldHave(text(user.fullName.toUpperCase()));
     }
 
     public void checkServiceHeaderOptions() {
-        for (String header : Headers.getServiceCategories()) {
+        for (String header : ServiceCategories.getCategories()) {
             serviceHeaderOptions.find(text(header.toUpperCase())).shouldBe(exist);
         }
     }
 
-
     public void checkServiceLeftSectionOptions() {
-        for (String header : Headers.getServiceCategories()) {
+        for (String header : ServiceCategories.getCategories()) {
             serviceLeftSectionOptions.find(text(header.toUpperCase())).shouldBe(exist);
         }
-    }
-
-    public void checkDifferentElements() {
-        checkboxes.shouldHaveSize(4);
-        radioButtons.shouldHaveSize(4);
-        dropDown.shouldBe(visible);
-        defaultButton.shouldBe(visible);
-        button.shouldBe(visible);
-    }
-
-    public void checkLeftSection() {
-        leftSection.shouldBe(visible);
-    }
-
-    public void checkRightSection() {
-        rightSection.shouldBe(visible);
-    }
-
-    public void checkLogRow(String row) {
-        logs.find(text(row)).shouldBe(exist);
     }
 }
