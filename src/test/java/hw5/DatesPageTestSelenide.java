@@ -12,6 +12,7 @@ import org.testng.annotations.Test;
 
 import static com.codeborne.selenide.Selenide.page;
 
+import static com.codeborne.selenide.WebDriverRunner.getWebDriver;
 import static hw5.enums.ServiceCategories.DATES;
 import static hw5.enums.Users.PITER_CHAILOVSKII;
 
@@ -26,6 +27,7 @@ public class DatesPageTestSelenide extends TestBase {
     public void beforeClass() {
         homePage = page(HomePage.class);
         datesPage = page(DatesPage.class);
+        getWebDriver().manage().window().maximize();
     }
 
 

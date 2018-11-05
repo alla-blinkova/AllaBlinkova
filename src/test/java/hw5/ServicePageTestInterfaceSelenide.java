@@ -11,6 +11,7 @@ import org.testng.annotations.Listeners;
 import org.testng.annotations.Test;
 
 import static com.codeborne.selenide.Selenide.page;
+import static com.codeborne.selenide.WebDriverRunner.getWebDriver;
 import static hw5.enums.CheckBoxes.WATER;
 import static hw5.enums.CheckBoxes.WIND;
 import static hw5.enums.DropdownElements.YELLOW;
@@ -32,6 +33,7 @@ public class ServicePageTestInterfaceSelenide extends TestBase {
     public void beforeClass() {
         homePage = page(HomePage.class);
         differentElementsPage = page(DifferentElementsPage.class);
+        getWebDriver().manage().window().maximize();
     }
 
     @Test

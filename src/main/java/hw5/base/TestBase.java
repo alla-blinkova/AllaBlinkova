@@ -9,6 +9,5 @@ public class TestBase {
     @BeforeSuite
     public void beforeSuite() {
         Configuration.browser = "chrome";
-        getWebDriver().manage().window().maximize();
     }
 }
