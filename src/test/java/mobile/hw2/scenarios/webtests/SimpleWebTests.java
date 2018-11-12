@@ -4,8 +4,6 @@ import mobile.hw2.setup.Driver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.testng.annotations.Test;
 
-import java.io.IOException;
-
 import static org.testng.Assert.assertEquals;
 
 @Test(groups = "web")
