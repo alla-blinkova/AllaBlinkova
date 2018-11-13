@@ -1,0 +1,26 @@
+{
+  "native_farm": {
+    "driver": "http://EPM-TSTF:52a8addc-77d7-471d-8fb5-cccf893b279a@epm-mstfmsq-ci.minsk.epam.com:8080/wd/hub",
+    "platformName": "Android",
+    "appPackage": "com.example.android.contactmanager",
+    "appActivity": ".ContactManager"
+  },
+  "web_farm": {
+    "driver": "http://EPM-TSTF:52a8addc-77d7-471d-8fb5-cccf893b279a@epm-mstfmsq-ci.minsk.epam.com:8080/wd/hub",
+    "platformName": "iOS",
+    "browserName": "Safari",
+    "deviceName": "IPHONE  5s"
+  },
+  "native_emulator": {
+    "driver": "http://127.0.0.1:4723/wd/hub",
+    "platformName": "Android",
+    "app": "D:\\epam\\auto\\ContactManager.apk",
+    "deviceName": "emulator-5554"
+  },
+  "web_emulator": {
+    "driver": "http://127.0.0.1:4723/wd/hub",
+    "platformName": "Android",
+    "browserName": "Chrome",
+    "deviceName": "emulator-5554"
+  }
+}
