@@ -11,16 +11,16 @@ public class ContactManagerPage {
 
     private final String app_package_name = "com.example.android.contactmanager:id/";
 
-    @AndroidFindBy(id = app_package_name + "addContactButton")
+    @FindBy(id = app_package_name + "addContactButton")
     private WebElement addButton;
 
-    @AndroidFindBy(xpath = "//android.widget.TextView[@content-desc=\"Contact Name\"]")
+    @FindBy(xpath = "//android.widget.TextView[@content-desc=\"Contact Name\"]")
     private WebElement contactName;
 
-    @AndroidFindBy(xpath = "//android.widget.TextView[@content-desc=\"Contact Phone\"]")
+    @FindBy(xpath = "//android.widget.TextView[@content-desc=\"Contact Phone\"]")
     private WebElement contactPhone;
 
-    @AndroidFindBy(id = app_package_name + "contactNameEditText")
+    @FindBy(id = app_package_name + "contactNameEditText")
     private WebElement contactNameField;
 
     @FindBy(id = app_package_name + "contactPhoneEditText")
